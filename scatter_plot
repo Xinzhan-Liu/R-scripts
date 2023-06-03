@@ -1,0 +1,13 @@
+> library(tidyverse)
+> theme_set(theme_grey())
+
+> library(openxlsx)
+> asm_stats_ggplot <- read.xlsx("R/asm_stats_ggplot.xlsx",sheet = 1)
+> class(asm_stats_ggplot)
+[1] "data.frame"
+
+> asm_stats_ggplot %>%
++ ggplot(aes(x=N50,y=TOTAL_LENGTH))+geom_point(alpha=0.5,aes(color=METHOD,size=BUSCO_Complete))+labs(x="Contig N50(Mb)",y="Genome length",title="Genome assembly statistics")
+
+> asm_stats_ggplot %>%
++ ggplot(aes(x=N50,y=TOTAL_LENGTH))+geom_point(alpha=0.5,aes(shape=METHOD,size=BUSCO_Complete))+labs(x="Contig N50(Mb)",y="Genome length",title="Genome assembly statistics")
