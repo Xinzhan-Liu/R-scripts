@@ -9,5 +9,10 @@
 > asm_stats_ggplot %>%
 + ggplot(aes(x=N50,y=TOTAL_LENGTH))+geom_point(alpha=0.5,aes(color=METHOD,size=BUSCO_Complete))+labs(x="Contig N50(Mb)",y="Genome length",title="Genome assembly statistics")
 
+Or
 > asm_stats_ggplot %>%
 + ggplot(aes(x=N50,y=TOTAL_LENGTH))+geom_point(alpha=0.5,aes(shape=METHOD,size=BUSCO_Complete))+labs(x="Contig N50(Mb)",y="Genome length",title="Genome assembly statistics")
+
+Or
+> asm_stats_ggplot %>%
++ ggplot(aes(x=N50,y=Total_length))+geom_point(alpha=0.5,aes(shape=Assmbly_method,color=Polish_method,size=BUSCO_Complete))+labs(x="Contig N50(Mb)",y="Genome length",title="Genome assembly statistics")
