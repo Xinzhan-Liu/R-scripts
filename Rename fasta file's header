@@ -1,0 +1,6 @@
+#rename the fasta file's header name
+#the original headers of fasta file Rhodotorula_kratochvilovae_LS11.masked.fasta is "PQDI01000001.1_Rhodotorula_kratochvilovae_strain_LS11_tig00000002_whole_genome_shotgun_sequence". The header of fasta file is 
+#longer than 18 so that the funannotate ruuning has error "Genome assembly error: headers contain more characters than the max (18), reformat headers to continue.". 
+# -d 指定分隔符，-f 指定输出分隔后的第一列，这里我们使用的分隔符是"."。
+
+cat Rhodotorula_kratochvilovae_LS11.masked.fasta | cut -d "." -f 1 > Rhodotorula_kratochvilovae_LS11.masked.new.fasta
