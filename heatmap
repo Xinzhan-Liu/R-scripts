@@ -1,0 +1,11 @@
+library(pheatmap)
+
+data_df <- read.csv("heatmap_blastp_HD_2.csv",header = TRUE,row.names = 1)
+
+pheatmap(data_df,cluster_rows = T,cluster_cols = F)
+
+#如果出现以下错误：
+#Error in .Call.graphics(C_palette2, .Call(C_palette2, NULL)) : 
+#invalid graphics state
+#使用 dev.off()
+
