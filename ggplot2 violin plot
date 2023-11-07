@@ -1,0 +1,13 @@
+#This script is to produce ggplot2 violin plot
+#http://www.sthda.com/english/wiki/ggplot2-violin-plot-quick-start-guide-r-software-and-data-visualization
+
+
+
+# Function to produce summary statistics (mean and +/- sd)
+data_summary <- function(x) {
+   m <- mean(x)
+   ymin <- m-sd(x)
+   ymax <- m+sd(x)
+   return(c(y=m,ymin=ymin,ymax=ymax))
+}
+
