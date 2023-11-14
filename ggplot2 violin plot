@@ -1,7 +1,12 @@
-#This script is to produce ggplot2 violin plot
+#This script is to produce violin plot using ggplot2
 #http://www.sthda.com/english/wiki/ggplot2-violin-plot-quick-start-guide-r-software-and-data-visualization
 
+#Import the table
+data_4 <- read.table("R_glutinis_complex_total.txt", header = TRUE)
 
+#produce the violin plot
+p4 <- ggplot(data_4,aes(x=species, y=ANI))+geom_violin()
+p4
 
 # Function to produce summary statistics (mean and +/- sd)
 data_summary <- function(x) {
@@ -11,3 +16,8 @@ data_summary <- function(x) {
    return(c(y=m,ymin=ymin,ymax=ymax))
 }
 
+#edit the violin plot
+p4 + stat_summary(fun.data=data_summary) + theme(axis.text.x = element_text(angle=45,hjust=1,size = 12),axis.text.y=element_text(size = 12))
+
+#Or edit the violin plot,adjust the lable order of x-axis 
+p1 + stat_summary(fun.data=data_summary) + scale_x_discrete(limits=c("R_mucilaginosa", "R_alborubescens", "R_clade_III", "R_clade_IV","R_clade_VI", "R_clade_VIII", "R_clade_XI", "R_dairenensis", "R_graminis", "R_clade", "R_diobovata", "R_frigidialcoholis", "R_kratochvilovae", "R_paludigena", "R_sphaerocarpa","R_taiwanensis","R_toruloides")) + theme(axis.text.x = element_text(angle=45,hjust=1,size = 12),axis.text.y=element_text(size = 12))
