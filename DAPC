@@ -1,0 +1,6 @@
+# DAPC analysis using the adegenet package. This method aims to identify and describe genetic clusters
+
+> getwd()
+[1] "/rhome/xinzhanl/R/DAPC"
+> library(vcfR)
+> x <- read.vcfR("RmucY2510_v1.All.SNP.combined_selected.vcf.gz")
