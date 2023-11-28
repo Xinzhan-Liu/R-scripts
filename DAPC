@@ -2,5 +2,15 @@
 
 > getwd()
 [1] "/rhome/xinzhanl/R/DAPC"
+
 > library(vcfR)
 > x <- read.vcfR("RmucY2510_v1.All.SNP.combined_selected.vcf.gz")
+> class(x)
+[1] "vcfR"
+attr(,"package")
+[1] "vcfR"
+
+> library(adegenet)
+> y <- vcfR2genlight(x)
+> ploidy(y) = 1
+> grp<-find.clusters(y,max.n.clust = 8)
