@@ -5,8 +5,8 @@ library(ape)
 # Read Newick tree file
 tree <- read.tree("concat_alignments.aa.mfa.nwk")
 
-# Read genome character CSV file
-genome_data <- read.txt("bar_plot_genome_character.txt", header = TRUE)
+# Read genome character table file
+genome_data <- read.table("bar_plot_genome_character.txt", header = TRUE)
 
 # Ensure labels match between tree and genome data
 if (!all(tree$tip.label %in% genome_data$Species)) {
