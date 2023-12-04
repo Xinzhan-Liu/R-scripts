@@ -1,2 +1,6 @@
 #combining ggtree and plot
 #https://yulab-smu.top/treedata-book/chapter4.html
+
+
+p1 <- p %<+% tip_metadata +geom_tippoint(aes(color=Sex_reproduction,shape=Sexual_reproduction_style),size=5)+scale_color_manual(values = c("blue", "red", "green"))+theme(legend.position = "bottom",legend.text = element_text(size = 20))
+> p1
