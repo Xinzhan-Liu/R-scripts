@@ -1,0 +1,43 @@
+#
+library(ggtree)
+library(ape)
+
+# Read Newick tree file
+tree <- read.tree("concat_alignments.aa.mfa.nwk")
+
+# Read genome character CSV file
+genome_data <- read.txt("bar_plot_genome_character.txt", header = TRUE)
+
+# Ensure labels match between tree and genome data
+if (!all(tree$tip.label %in% genome_data$Species)) {
+  stop("Labels do not match between tree and genome data.")
+}
+
+# Merge tree and genome data
+tree_with_genome <- merge(tree, genome_data, by.x = "tip.label", by.y = "Species")
+
+# Create ggtree object
+ggtree_obj <- ggtree(tree_with_genome)
+
+# Create facetted bar plots for multiple genome character data (e.g., GC% and genome sizes)
+facet_barplot <- geom_facet(
+  data = tree_with_genome,
+  geom = geom_bar(stat = "identity"),
+  mapping = aes(x = x, y = GC%, fill = "GC%"),
+  panel = "facet_tip",
+  scales = "free_y"
+) +
+geom_facet(
+  data = tree_with_genome,
+  geom = geom_bar(stat = "identity"),
+  mapping = aes(x = x, y = TOTAL_LENGTH, fill = "TOTAL_LENGTH"),
+  panel = "facet_tip",
+  scales = "free_y"
+)
+
+# Add facetted bar plot annotations to the tree
+ggtree_obj <- ggtree_obj + facet_barplot
+
+# Display the annotated tree with facetted bar plots for genome character data
+print(ggtree_obj)
+
